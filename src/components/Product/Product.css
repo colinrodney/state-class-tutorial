@@ -1,0 +1,17 @@
+.wrapper{
+    background-color: #000;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.product span{
+    font-size: 100px;
+}
+
+.wrapper button{
+    font-size: 20px;
+    padding: 5px;
+    background-color: none;
+    margin: 0 5px;
+}
