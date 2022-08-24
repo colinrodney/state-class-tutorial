@@ -42,9 +42,9 @@ class Product extends Component{
         return this.state.total.toLocaleString("en-US", this.currencyOptions)
     }
 
-    setTotal = () =>{
-        return this.state.total - this.state.total.toLocaleString("en-US", this.currencyOptions)
-    }
+    // setTotal = () =>{
+    //     return this.state.total - this.state.total.toLocaleString("en-US", this.currencyOptions)
+    // }
 
     // add = () =>{
     //     this.setState({
@@ -56,15 +56,15 @@ class Product extends Component{
     add = (products) =>{
         this.setState(state =>({
             cart:[...state.cart, products.name],
-            total: [state.total + products.price],
+            total: state.total + products.price,
         }))
     }
 
-    remove = () =>{
-        this.setState({
-            cart: [],
-            total: this.setTotal(),
-        })
+    remove = (products) =>{
+        this.setState(state =>({
+            cart:[...state.cart, products.name],
+            total: state.total - products.price,
+        }))
     }
 
     render(){
@@ -80,7 +80,8 @@ class Product extends Component{
                     <div className="product">
                         <span role="img" aria-label={product.name}>{product.emoji}</span>
                     </div>
-                    <button onClick={this.add(product)}>Add</button>
+                    {/* product being passed as argument might be a problem... */}
+                    <button onClick={() => this.add(product)}>Add</button>
                     <button onClick={this.remove}>Remove</button>
                 </div>
                 )}
